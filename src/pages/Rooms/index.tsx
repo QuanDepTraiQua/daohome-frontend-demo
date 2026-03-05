@@ -11,7 +11,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 // =========================================================================
-// 🚀 MOCK DATA: DỮ LIỆU GIẢ LẬP CHO BẢN DEMO (KHÔNG CẦN BACKEND)
+
 // =========================================================================
 let MOCK_DATABASE = [
     {
@@ -108,7 +108,7 @@ const Rooms: React.FC = () => {
     const [form] = Form.useForm();
 
     // Giả lập tài khoản Admin để hiển thị nút Xóa
-    let user: any = { username: 'Admin Demo', role: 'ADMIN', first_name: 'Khách' };
+    let user: any = { username: 'Admin', role: 'ADMIN', first_name: 'Khách' };
     try {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
@@ -169,7 +169,7 @@ const Rooms: React.FC = () => {
 
             MOCK_DATABASE = [newRoom, ...MOCK_DATABASE];
             
-            message.success("Thêm phòng mới thành công! (Chế độ Demo)");
+            message.success("Thêm phòng mới thành công!");
             setIsModalVisible(false);
             form.resetFields();
             fetchRooms();
@@ -180,7 +180,7 @@ const Rooms: React.FC = () => {
     // HÀM GIẢ LẬP XÓA PHÒNG KHỎI BỘ NHỚ RAM
     const handleDeleteRoom = (roomId: number) => {
         MOCK_DATABASE = MOCK_DATABASE.filter(r => r.id !== roomId);
-        message.success("Đã xóa phòng thành công! (Chế độ Demo)");
+        message.success("Đã xóa phòng thành công!");
         fetchRooms();
     };
 
@@ -208,7 +208,7 @@ const Rooms: React.FC = () => {
             <Header className="rooms-header">
                 <div className="header-logo-container">
                     <img src={logo} alt="Đảo Home Logo" className="header-logo" />
-                    <Title level={4} className="header-title">Hệ Thống Quản Lý (DEMO)</Title>
+                    <Title level={4} className="header-title">Đảo Home</Title>
                 </div>
                 <div>
                     <Space>
@@ -390,7 +390,7 @@ const Rooms: React.FC = () => {
             </Card>
 
             <Modal
-                title="Thêm Dữ Liệu Nhà/Phòng (Bản Demo)"
+                title="Thêm Dữ Liệu Nhà/Phòng"
                 open={isModalVisible}
                 onCancel={handleCancel}
                 footer={null}
@@ -559,7 +559,7 @@ const Rooms: React.FC = () => {
                     <div className="modal-footer-actions">
                         <Space>
                             <Button onClick={handleCancel}>Hủy bỏ</Button>
-                            <Button type="primary" htmlType="submit" loading={submitLoading} size="large">Lưu dữ liệu Demo</Button>
+                            <Button type="primary" htmlType="submit" loading={submitLoading} size="large">Lưu phòng</Button>
                         </Space>
                     </div>
                 </Form>
